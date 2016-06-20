@@ -179,7 +179,15 @@ void loop() {
               heatup(temp, client);
               switchheatoff();
               switchpumpon();
-              delay(duration * 1000);
+              int i;
+              for (i=duration;i>0;i--){
+                char carr[5];
+                itoa(i, carr, 10);
+                client.print("noch: ");
+                client.print(carr);
+                client.println("sec");
+                delay(1000);
+              }
               switchpumpoff();
             } else {
               client.println("temperatur ausserhalb des erlaubten Bereiches");
